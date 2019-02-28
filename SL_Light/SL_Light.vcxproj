@@ -115,6 +115,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Coordinate.h" />
+    <ClInclude Include="Path.h" />
+    <ClInclude Include="Station.h" />
+    <ClInclude Include="TimeTable.h" />
+    <ClInclude Include="Transport.h" />
+    <ClInclude Include="TransportGraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Station.cpp" />
+    <ClCompile Include="TimeTable.cpp" />
+    <ClCompile Include="Transport.cpp" />
+    <ClCompile Include="TransportGraph.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
