@@ -1,17 +1,20 @@
 #ifndef TIMETABLE_H
 #define TIMETABLE_H
 
-#include <unordered_map>
+#include <map>
+#include "Transport.h"
 
 class TimeTable
 {
 public:
 	static TimeTable* getInstance();
+	void addDeparture(int time, Transport* trans, int length);
+	std::pair<int, std::pair<int, Transport*>> getDeparture(int time);
 	~TimeTable();
 protected:
 	TimeTable();
 private:
-	//std::unordered_map<std::pair<Station*, Station*>, int> paths;
+	std::map<int, std::pair<int, Transport*>> dep;
 };
 
 #endif

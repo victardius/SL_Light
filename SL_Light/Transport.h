@@ -1,22 +1,20 @@
 #ifndef TRANSPORT_H
 #define TRANSPORT_H
 
-#include "TimeTable.h"
-
 class Transport
 {
 public:
 	const static int getTopSpeed();
-	virtual int getSpeed() = 0;
+	virtual int getSpeed();
 	void setTimeTable();
 protected:
 	Transport(int s);
 	virtual ~Transport();
 private:
-	TimeTable* timeTable;
-	static int topSpeed;
 	int speed;
 };
+
+static int topSpeed = 0;
 
 #endif
 

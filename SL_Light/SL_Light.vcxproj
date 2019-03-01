@@ -85,6 +85,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -117,13 +120,17 @@
   <ItemGroup>
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="SCompare.h" />
     <ClInclude Include="Station.h" />
+    <ClInclude Include="Subway.h" />
     <ClInclude Include="TimeTable.h" />
     <ClInclude Include="Transport.h" />
     <ClInclude Include="TransportGraph.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Station.cpp" />
+    <ClCompile Include="Subway.cpp" />
     <ClCompile Include="TimeTable.cpp" />
     <ClCompile Include="Transport.cpp" />
     <ClCompile Include="TransportGraph.cpp" />

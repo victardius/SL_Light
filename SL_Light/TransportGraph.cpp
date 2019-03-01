@@ -1,7 +1,9 @@
 #include "TransportGraph.h"
 #include "Path.h"
+#include "SCompare.h"
 #include <queue>
-#define INFINITY -1
+#include <vector>
+#include <iostream>
 
 
 TransportGraph::TransportGraph()
@@ -9,39 +11,62 @@ TransportGraph::TransportGraph()
 	
 }
 
-void TransportGraph::aStar(Station* start, Station* end)
+void TransportGraph::aStar(Station* start, Station* end, int time)
 {
 
-	std::priority_queue<Station*, std::greater<Station*>> pq;
+	std::priority_queue<Station*, std::vector<Station*>, SCompare> pq;
 
-	for (Station* s : stations) {
-		s->timeAway = INFINITY;
-		s->known = false;
+	for (auto& s : stations) {
+		s.second->timeAway = (int)INFINITY;
+		s.second->known = false;
 	}
 
 	start->timeAway = 0;
 
 	pq.push(start);
 
-	while (end->timeAway == INFINITY) {
-		Station* s = pq.pop;
-		s->known = true;
+	while ((end->timeAway == (int)INFINITY && !end->known) || pq.empty()) {
+		Station* s = pq.top();
+		pq.pop();
+		std::cout << "Station: " << s->getName() << " Minuter: " << s->timeAway << std::endl;
 
-		for (Path* p : s->getPath()) {
-			if (!p->station->known) {
-				int distance = p->length + std::abs(*p->station->getPosition() - *end->getPosition()); //måste räkna in tid, (längd / hastighet) * 60
-				if (p->station->timeAway == INFINITY || s->timeAway + distance < p->station->timeAway) {
-					if (p->station->timeAway == INFINITY)
-						pq.push(p->station);
-					p->station->timeAway = s->timeAway + distance;
-					p->station->previous = s;
+		if (!s->known) {
+
+			s->known = true;
+
+			for (auto& p : s->getPaths()) {
+				
+				if (!p.second->station->known) {
+
+					std::pair<int, std::pair<int, Transport*>> temp = p.second->tt->getDeparture(time);
+					int timeAway = temp.second.first; 
+
+					if (p.second->station->timeAway == (int)INFINITY || s->timeAway + timeAway < p.second->station->timeAway) {
+
+						p.second->station->timeAway = s->timeAway + timeAway;
+						p.second->station->hTimeAway = (std::abs(*p.second->station->getPosition() - *end->getPosition()) / Transport::getTopSpeed()) * 60;
+						p.second->station->previous = s;
+						pq.push(p.second->station);//kan vara ett alternativ att göra en egen prioritetskö
+					}
 				}
 			}
 		}
 	}
 }
 
+void TransportGraph::addStation(std::string name, int x, int y)
+{
+	stations.emplace(name, Station::getInstance(name, x, y));
+}
+
+Station * TransportGraph::getStation(std::string name)
+{
+	return stations.at(name);
+}
+
 
 TransportGraph::~TransportGraph()
 {
 }
+
+TransportGraph tg;

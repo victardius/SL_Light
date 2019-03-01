@@ -4,6 +4,7 @@
 #include "Coordinate.h"
 #include "Transport.h"
 #include "Path.h"
+#include "TimeTable.h"
 #include <unordered_map>
 #include <vector>
 #include <string>
@@ -14,22 +15,24 @@ public:
 	static Station* getInstance(std::string name, int x, int y);
 	Coordinate* getPosition();
 	void addPath(int distance, Station*);
-	std::vector<Path*> getPath();
-	int timeAway = -1;
+	std::unordered_map<std::string, Path<Station*>*> getPaths();
+	Path<Station*>* getPath(std::string name);
+	std::string getName();
+	int timeAway = (int)INFINITY;
+	int hTimeAway = (int)INFINITY;
 	Station* previous;
 	bool known = false;
-	//std::unordered_map<Station*, std::pair<int, std::vector<Transport*>>>* getAdjecent();
-	bool operator<(Station* other) const;
-	bool operator>(Station* other) const;
+	bool operator<(const Station& other);
+	bool operator>(const Station& other);
 	Station() {};
 	~Station();
 protected:
 	Station(std::string name, int x, int y);
 private:
 	Coordinate position{ 0,0 };
-	//std::unordered_map<Station*, std::pair<int,std::vector<Transport*>>> adjacentStations;
 	std::string name;
-	std::vector<Path*> paths;
+	//std::vector<Path<Station*>*> paths;
+	std::unordered_map<std::string, Path<Station*>*> paths;
 };
 
 #endif

@@ -33,6 +33,12 @@
     <ClInclude Include="TransportGraph.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Subway.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SCompare.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Station.cpp">
@@ -45,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TransportGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Subway.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

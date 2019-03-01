@@ -21,27 +21,32 @@ Coordinate * Station::getPosition()
 
 void Station::addPath(int distance, Station* s)
 {
-	paths.push_back(new Path(s, distance));
+	paths.emplace(s->name ,new Path<Station*>(s, distance));
 }
 
-std::vector<Path*> Station::getPath()
+std::unordered_map<std::string, Path<Station*>*> Station::getPaths()
 {
 	return paths;
 }
 
-//std::unordered_map<Station*, std::vector<Transport*>>* Station::getAdjecent()
-//{
-//	return nullptr;
-//}
-
-bool Station::operator<(Station * other) const
+Path<Station*>* Station::getPath(std::string name)
 {
-	return timeAway < other->timeAway;
+	return paths.at(name);
 }
 
-bool Station::operator>(Station * other) const
+std::string Station::getName()
 {
-	return timeAway > other->timeAway;
+	return name;
+}
+
+bool Station::operator<(const Station& other)
+{
+	return timeAway + hTimeAway < other.timeAway + other.hTimeAway;
+}
+
+bool Station::operator>(const Station& other)
+{
+	return timeAway + hTimeAway > other.timeAway + other.hTimeAway;
 }
 
 Station::~Station()

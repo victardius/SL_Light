@@ -7,6 +7,11 @@ const int Transport::getTopSpeed()
 	return topSpeed;
 }
 
+int Transport::getSpeed()
+{
+	return speed * 1000;
+}
+
 void Transport::setTimeTable()
 {
 }
