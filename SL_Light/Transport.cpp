@@ -4,7 +4,7 @@
 
 const int Transport::getTopSpeed()
 {
-	return topSpeed;
+	return topSpeed * 1000;
 }
 
 int Transport::getSpeed()

@@ -8,7 +8,7 @@ class TimeTable
 {
 public:
 	static TimeTable* getInstance();
-	void addDeparture(int time, Transport* trans, int length);
+	void addDeparture(double time, Transport* trans, double length);
 	std::pair<int, std::pair<int, Transport*>> getDeparture(int time);
 	~TimeTable();
 protected:

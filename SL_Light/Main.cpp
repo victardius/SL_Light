@@ -3,24 +3,24 @@
 
 int main(int argc, char** argv)
 {
-	tg.addStation("T-Centralen", 15621, 2153);
-	tg.addStation("Slussen", 23632, 1251);
-	tg.addStation("Mariatorget", 12612, 235);
-	tg.addStation("Uppsala", 136, 3631);
-	tg.addStation("Kista", 1111, 2222);
+	tg.addStation("T-Centralen", 2500, 6000);
+	tg.addStation("Slussen", 10000, 5000);
+	tg.addStation("Mariatorget", 5500, 10000);
+	tg.addStation("Uppsala", 0, 9000);
+	tg.addStation("Kista", 6000, 0);
 
-	tg.getStation("T-Centralen")->addPath(42224, tg.getStation("Uppsala"));
-	tg.getStation("T-Centralen")->addPath(58645, tg.getStation("Kista"));
-	tg.getStation("Kista")->addPath(15125, tg.getStation("Slussen"));
-	tg.getStation("Kista")->addPath(63365, tg.getStation("Mariatorget"));
-	tg.getStation("Slussen")->addPath(52225, tg.getStation("Mariatorget"));
-	tg.getStation("Uppsala")->addPath(64674, tg.getStation("Mariatorget"));
-	tg.getStation("Uppsala")->addPath(42224, tg.getStation("T-Centralen"));
-	tg.getStation("Kista")->addPath(58645, tg.getStation("T-Centralen"));
-	tg.getStation("Slussen")->addPath(15125, tg.getStation("Kista"));
-	tg.getStation("Mariatorget")->addPath(63365, tg.getStation("Kista"));
-	tg.getStation("Mariatorget")->addPath(52225, tg.getStation("Slussen"));
-	tg.getStation("Mariatorget")->addPath(64674, tg.getStation("Uppsala"));
+	tg.getStation("T-Centralen")->addPath(4500, tg.getStation("Uppsala"));
+	tg.getStation("T-Centralen")->addPath(7500, tg.getStation("Kista"));
+	tg.getStation("Kista")->addPath(7300, tg.getStation("Slussen"));
+	tg.getStation("Kista")->addPath(12700, tg.getStation("Mariatorget"));
+	tg.getStation("Slussen")->addPath(7800, tg.getStation("Mariatorget"));
+	tg.getStation("Uppsala")->addPath(6100, tg.getStation("Mariatorget"));
+	tg.getStation("Uppsala")->addPath(4500, tg.getStation("T-Centralen"));
+	tg.getStation("Kista")->addPath(7500, tg.getStation("T-Centralen"));
+	tg.getStation("Slussen")->addPath(7300, tg.getStation("Kista"));
+	tg.getStation("Mariatorget")->addPath(12700, tg.getStation("Kista"));
+	tg.getStation("Mariatorget")->addPath(7800, tg.getStation("Slussen"));
+	tg.getStation("Mariatorget")->addPath(6100, tg.getStation("Uppsala"));
 
 	Subway* sub = Subway::getInstance();
 
@@ -99,6 +99,8 @@ int main(int argc, char** argv)
 	tg.getStation("Uppsala")->getPath("Mariatorget")->tt->addDeparture(56, sub, tg.getStation("Uppsala")->getPath("Mariatorget")->length);
 
 	tg.aStar(tg.getStation("Slussen"), tg.getStation("Uppsala"), 1);
+
+	tg.printPath();
 
 	return 0;
 }

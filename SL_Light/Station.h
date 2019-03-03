@@ -9,6 +9,8 @@
 #include <vector>
 #include <string>
 
+#define INFINITY 999999999
+
 class Station
 {
 public:
@@ -18,8 +20,8 @@ public:
 	std::unordered_map<std::string, Path<Station*>*> getPaths();
 	Path<Station*>* getPath(std::string name);
 	std::string getName();
-	int timeAway = (int)INFINITY;
-	int hTimeAway = (int)INFINITY;
+	int timeAway = INFINITY;
+	int hTimeAway = INFINITY;
 	Station* previous;
 	bool known = false;
 	bool operator<(const Station& other);
