@@ -15,7 +15,7 @@ public:
 	~TransportGraph();
 private:
 	std::unordered_map<std::string, Station*> stations;
-	Station* destination, *startStation;
+	Station* destination = nullptr, *startStation = nullptr;
 };
 
 extern TransportGraph tg;

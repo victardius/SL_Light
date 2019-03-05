@@ -1,5 +1,6 @@
 #include "TransportGraph.h"
 #include "Subway.h"
+#include <iostream>
 
 int main(int argc, char** argv)
 {
@@ -8,6 +9,7 @@ int main(int argc, char** argv)
 	tg.addStation("Mariatorget", 5500, 10000);
 	tg.addStation("Uppsala", 0, 9000);
 	tg.addStation("Kista", 6000, 0);
+	tg.addStation("Unreachable", 1000, 1000);
 
 	tg.getStation("T-Centralen")->addPath(4500, tg.getStation("Uppsala"));
 	tg.getStation("T-Centralen")->addPath(7500, tg.getStation("Kista"));
@@ -98,7 +100,23 @@ int main(int argc, char** argv)
 	tg.getStation("Uppsala")->getPath("Mariatorget")->tt->addDeparture(46, sub, tg.getStation("Uppsala")->getPath("Mariatorget")->length);
 	tg.getStation("Uppsala")->getPath("Mariatorget")->tt->addDeparture(56, sub, tg.getStation("Uppsala")->getPath("Mariatorget")->length);
 
-	tg.aStar(tg.getStation("Slussen"), tg.getStation("Uppsala"), 1);
+	tg.aStar(tg.getStation("T-Centralen"), tg.getStation("Unreachable"), 8);
+
+	std::cout << std::endl;
+
+	tg.printPath();
+
+	std::cout << std::endl << std::endl;
+
+	tg.aStar(tg.getStation("Slussen"), tg.getStation("Uppsala"), 8);
+
+	std::cout << std::endl;
+
+	tg.printPath();
+
+	std::cout << std::endl << std::endl;
+
+	tg.aStar(tg.getStation("Mariatorget"), tg.getStation("Ogiltigt namn"), 8);
 
 	tg.printPath();
 
