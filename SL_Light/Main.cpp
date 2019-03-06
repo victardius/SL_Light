@@ -108,7 +108,7 @@ int main(int argc, char** argv)
 
 	std::cout << std::endl << std::endl;
 
-	tg.aStar(tg.getStation("Slussen"), tg.getStation("Uppsala"), 8);
+	tg.aStar(tg.getStation("Slussen"), tg.getStation("Uppsala"), 1);
 
 	std::cout << std::endl;
 

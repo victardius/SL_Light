@@ -25,7 +25,7 @@ void TransportGraph::aStar(Station* start, Station* end, int time)
 		}
 
 		start->timeAway = 0 + time;
-
+		
 		pq.push(start);
 
 		while (!end->known && !(pq.size() == 0)) {
