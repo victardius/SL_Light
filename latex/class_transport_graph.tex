@@ -1,0 +1,81 @@
+\hypertarget{class_transport_graph}{}\section{Transport\+Graph Class Reference}
+\label{class_transport_graph}\index{TransportGraph@{TransportGraph}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_transport_graph_a2272ac3ddfd7efee405d36d44108037d}{a\+Star}} (\mbox{\hyperlink{class_station}{Station}} $\ast$start, \mbox{\hyperlink{class_station}{Station}} $\ast$end, int star)
+\item 
+void \mbox{\hyperlink{class_transport_graph_a5c654fc84244b63cb8171eb92d072910}{add\+Station}} (std\+::string name, int x, int y)
+\item 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ \mbox{\hyperlink{class_transport_graph_a2ed30af16042cda3aa65b5b6b57deb62}{get\+Station}} (std\+::string name)
+\item 
+bool \mbox{\hyperlink{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}{print\+Path}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_transport_graph_a5c654fc84244b63cb8171eb92d072910}\label{class_transport_graph_a5c654fc84244b63cb8171eb92d072910}} 
+\index{TransportGraph@{TransportGraph}!addStation@{addStation}}
+\index{addStation@{addStation}!TransportGraph@{TransportGraph}}
+\subsubsection{\texorpdfstring{addStation()}{addStation()}}
+{\footnotesize\ttfamily void Transport\+Graph\+::add\+Station (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+Adds a new station to the graph without any edges (edges need to be added by using the add\+Path() function on stations).
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & representing the name of the station that will be used to find the station. \\
+\hline
+{\em int} & x and y represents the coordinates where this station will be. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_transport_graph_a2272ac3ddfd7efee405d36d44108037d}\label{class_transport_graph_a2272ac3ddfd7efee405d36d44108037d}} 
+\index{TransportGraph@{TransportGraph}!aStar@{aStar}}
+\index{aStar@{aStar}!TransportGraph@{TransportGraph}}
+\subsubsection{\texorpdfstring{aStar()}{aStar()}}
+{\footnotesize\ttfamily void Transport\+Graph\+::a\+Star (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{start,  }\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{end,  }\item[{int}]{time }\end{DoxyParamCaption})}
+
+Finds the shortest path in minutes to get from start to end. The function does not return anything, but it changes the previous variable in the \mbox{\hyperlink{class_station}{Station}} objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied by 60 to convert it into minutes. When the fastest path to end has been found the path there can be printed through the end stations previous variable and then using the previous on every previous station until the start station has been reached. This can also be done by using the \mbox{\hyperlink{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}{print\+Path()}} function in \mbox{\hyperlink{class_transport_graph}{Transport\+Graph}} after this function has been run.
+
+
+\begin{DoxyParams}{Parameters}
+{\em Station$\ast$} & start and end representing where to travel from and to in the graph. \\
+\hline
+{\em int} & time representing the time to start travelling in minutes. Also used to find the best path in regards to departure times and lengths. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_transport_graph_a2ed30af16042cda3aa65b5b6b57deb62}\label{class_transport_graph_a2ed30af16042cda3aa65b5b6b57deb62}} 
+\index{TransportGraph@{TransportGraph}!getStation@{getStation}}
+\index{getStation@{getStation}!TransportGraph@{TransportGraph}}
+\subsubsection{\texorpdfstring{getStation()}{getStation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_station}{Station}} $\ast$ Transport\+Graph\+::get\+Station (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+Gets the station object reference related to the string sent as a parameter from the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em String} & that is the name of a station previously added.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_station}{Station}} object reference (Station$\ast$) to the station with the parameter name sent in the function. If no station has that name it prints to cout \char`\"{}\+No such station exists!\char`\"{}. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}\label{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}} 
+\index{TransportGraph@{TransportGraph}!printPath@{printPath}}
+\index{printPath@{printPath}!TransportGraph@{TransportGraph}}
+\subsubsection{\texorpdfstring{printPath()}{printPath()}}
+{\footnotesize\ttfamily bool Transport\+Graph\+::print\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Prints to cout the path found by the a\+Star function to the found station. 
+
+If there was no path to the station it will print to cout \char`\"{}\+Could not find a path to S\+T\+A\+T\+I\+O\+N\+N\+A\+M\+E\char`\"{}
+
+\begin{DoxyReturn}{Returns}
+true if a path was searched for with a\+Star before running printpath, false if no station has been searched for. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+L\+\_\+\+Light/Transport\+Graph.\+h\item 
+S\+L\+\_\+\+Light/Transport\+Graph.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,59 @@
+\hypertarget{class_station}{}\section{Station Class Reference}
+\label{class_station}\index{Station@{Station}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_station_ace8d8af8f5bba5a95283763d3945f827}\label{class_station_ace8d8af8f5bba5a95283763d3945f827}} 
+\mbox{\hyperlink{struct_coordinate}{Coordinate}} $\ast$ {\bfseries get\+Position} ()
+\item 
+\mbox{\Hypertarget{class_station_a21a67376166fa63c399d0eb7787fb48b}\label{class_station_a21a67376166fa63c399d0eb7787fb48b}} 
+void {\bfseries add\+Path} (int distance, \mbox{\hyperlink{class_station}{Station}} $\ast$)
+\item 
+\mbox{\Hypertarget{class_station_a2a9fe64924776bb4a69ed605e318edae}\label{class_station_a2a9fe64924776bb4a69ed605e318edae}} 
+std\+::unordered\+\_\+map$<$ std\+::string, \mbox{\hyperlink{struct_path}{Path}}$<$ \mbox{\hyperlink{class_station}{Station}} $\ast$ $>$ $\ast$ $>$ {\bfseries get\+Paths} ()
+\item 
+\mbox{\Hypertarget{class_station_a3c00ed62bb4162110aa41e2e2317f618}\label{class_station_a3c00ed62bb4162110aa41e2e2317f618}} 
+\mbox{\hyperlink{struct_path}{Path}}$<$ \mbox{\hyperlink{class_station}{Station}} $\ast$ $>$ $\ast$ {\bfseries get\+Path} (std\+::string name)
+\item 
+\mbox{\Hypertarget{class_station_ae353616abbfca44e00a0baa730998d1c}\label{class_station_ae353616abbfca44e00a0baa730998d1c}} 
+std\+::string {\bfseries get\+Name} ()
+\item 
+\mbox{\Hypertarget{class_station_a9e92c0c15760682ac8ed41cb0bd4f208}\label{class_station_a9e92c0c15760682ac8ed41cb0bd4f208}} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{class_station}{Station}} \&other)
+\item 
+\mbox{\Hypertarget{class_station_a2fc0e86c69ffe0997f96366385f4a8fb}\label{class_station_a2fc0e86c69ffe0997f96366385f4a8fb}} 
+bool {\bfseries operator$>$} (const \mbox{\hyperlink{class_station}{Station}} \&other)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_station_ad62c26d1d947a25e1081fcf5792cf16e}\label{class_station_ad62c26d1d947a25e1081fcf5792cf16e}} 
+static \mbox{\hyperlink{class_station}{Station}} $\ast$ {\bfseries get\+Instance} (std\+::string name, int x, int y)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_station_ae3cc111992205ec74e5d3b5ba8541b31}\label{class_station_ae3cc111992205ec74e5d3b5ba8541b31}} 
+int {\bfseries time\+Away} = I\+N\+F\+I\+N\+I\+TY
+\item 
+\mbox{\Hypertarget{class_station_ad73a90183ca8da7b259695e90e4a0d95}\label{class_station_ad73a90183ca8da7b259695e90e4a0d95}} 
+int {\bfseries h\+Time\+Away} = I\+N\+F\+I\+N\+I\+TY
+\item 
+\mbox{\Hypertarget{class_station_a465cf1c945f9197f5b45e9a1bb898543}\label{class_station_a465cf1c945f9197f5b45e9a1bb898543}} 
+\mbox{\hyperlink{class_station}{Station}} $\ast$ {\bfseries previous}
+\item 
+\mbox{\Hypertarget{class_station_a2c55009562b413dadb86d0e040424832}\label{class_station_a2c55009562b413dadb86d0e040424832}} 
+bool {\bfseries known} = false
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_station_ae136c6cba0e6f4d3a33d0b6e6d0082de}\label{class_station_ae136c6cba0e6f4d3a33d0b6e6d0082de}} 
+{\bfseries Station} (std\+::string name, int x, int y)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+L\+\_\+\+Light/Station.\+h\item 
+S\+L\+\_\+\+Light/Station.\+cpp\end{DoxyCompactItemize}

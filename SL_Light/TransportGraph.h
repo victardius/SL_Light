@@ -11,7 +11,7 @@ public:
 	void aStar(Station* start, Station* end, int star);
 	void addStation(std::string name, int x, int y);
 	Station* getStation(std::string name);
-	void printPath();
+	bool printPath();
 	~TransportGraph();
 private:
 	std::unordered_map<std::string, Station*> stations;

@@ -2,7 +2,7 @@
 
 
 
-Station::Station(std::string name, int x, int y): name(name)
+Station::Station(std::string name, int x, int y): name(name), previous(nullptr)
 {
 	position.x = x;
 	position.y = y;

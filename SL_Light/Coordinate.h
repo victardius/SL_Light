@@ -5,10 +5,12 @@
 
 struct Coordinate
 {
+/**
+ * Internal class for managing coordinates used by stations in some functions.
+ *
+ * @param int representing x and y coordinates/location.
+ */
 	Coordinate(int xx, int yy) : x(xx), y(yy) {};
-	/*int operator-(const Coordinate other) {
-		return (int)std::sqrt(std::pow(other.x - x, 2) + std::pow(other.y - y, 2));
-	}*/
 	int x, y;
 };
 

@@ -12,6 +12,17 @@ TransportGraph::TransportGraph()
 	
 }
 
+/**
+ * Finds the shortest path in minutes to get from start to end. The function does not return anything, but it changes the previous variable in the
+ * Station objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied 
+ * by 60 to convert it into minutes.
+ * When the fastest path to end has been found the path there can be printed through the end stations previous variable and then using the previous on
+ * every previous station until the start station has been reached. This can also be done by using the printPath() function in TransportGraph after
+ * this function has been run.
+ *
+ * @param Station* start and end representing where to travel from and to in the graph. 
+ * @param int time representing the time to start travelling in minutes. Also used to find the best path in regards to departure times and lengths.
+ */
 void TransportGraph::aStar(Station* start, Station* end, int time)
 {
 	if (end != nullptr) {
@@ -61,11 +72,24 @@ void TransportGraph::aStar(Station* start, Station* end, int time)
 	}
 }
 
+/**
+ * Adds a new station to the graph without any edges (edges need to be added by using the addPath() function on stations). 
+ *
+ * @param String representing the name of the station that will be used to find the station.
+ * @param int x and y represents the coordinates where this station will be. 
+ */
 void TransportGraph::addStation(std::string name, int x, int y)
 {
 	stations.emplace(name, Station::getInstance(name, x, y));
 }
 
+/**
+ * Gets the station object reference related to the string sent as a parameter from the graph.
+ * 
+ * @param String that is the name of a station previously added.
+ *
+ * @return Station object reference (Station*) to the station with the parameter name sent in the function. If no station has that name it prints to cout "No such station exists!".
+ */
 Station * TransportGraph::getStation(std::string name)
 {
 	try {
@@ -78,7 +102,14 @@ Station * TransportGraph::getStation(std::string name)
 	}
 }
 
-void TransportGraph::printPath()
+/**
+ * Prints to cout the path found by the aStar function to the found station.
+ * <p>
+ * If there was no path to the station it will print to cout "Could not find a path to STATIONNAME"
+ * 
+ * @return true if a path was searched for with aStar before running printpath, false if no station has been searched for.
+ */
+bool TransportGraph::printPath()
 {
 	if (destination != nullptr) {
 		if (destination->known) {
@@ -96,7 +127,10 @@ void TransportGraph::printPath()
 		}
 		else
 			std::cout << "Could not find a path to " << destination->getName() << std::endl;
+
+		return true;
 	}
+	return false;
 }
 
 

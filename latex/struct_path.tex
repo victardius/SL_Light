@@ -1,0 +1,43 @@
+\hypertarget{struct_path}{}\section{Path$<$ T $>$ Struct Template Reference}
+\label{struct_path}\index{Path$<$ T $>$@{Path$<$ T $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_path_ad298f0649669ad7365d60703b13c9576}{Path}} (T s, int l)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_path_a07be19a1b11adfb55f0a2ceec600691c}\label{struct_path_a07be19a1b11adfb55f0a2ceec600691c}} 
+T {\bfseries station}
+\item 
+\mbox{\Hypertarget{struct_path_ad15edbbd948f0d00ad937b804c6aed04}\label{struct_path_ad15edbbd948f0d00ad937b804c6aed04}} 
+int {\bfseries length}
+\item 
+\mbox{\Hypertarget{struct_path_a31b1efe02f0bf5b7b912b9a6350a8f3a}\label{struct_path_a31b1efe02f0bf5b7b912b9a6350a8f3a}} 
+\mbox{\hyperlink{class_time_table}{Time\+Table}} $\ast$ {\bfseries tt} = Time\+Table\+::get\+Instance()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_path_ad298f0649669ad7365d60703b13c9576}\label{struct_path_ad298f0649669ad7365d60703b13c9576}} 
+\index{Path$<$ T $>$@{Path$<$ T $>$}!Path@{Path}}
+\index{Path@{Path}!Path$<$ T $>$@{Path$<$ T $>$}}
+\subsubsection{\texorpdfstring{Path()}{Path()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{struct_path}{Path}}$<$ T $>$\+::\mbox{\hyperlink{struct_path}{Path}} (\begin{DoxyParamCaption}\item[{T}]{s,  }\item[{int}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\hyperlink{struct_path}{Path}} represents one way edges between vertices in the graph. This is a template class that is used by vertices to find other vertices on the other side of said edge. This class uses one parameter station which is the vertice on the other side of the edge. Length is used to define the weight of the edge. This class is used by \mbox{\hyperlink{class_station}{Station}} objects to define all edges/paths to other stations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & s is the vertice on the other end of the edge, or the other station in the case of Stations. \\
+\hline
+{\em int} & l is the weight of the edge or length of the path in the case of stations. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+S\+L\+\_\+\+Light/Path.\+h\end{DoxyCompactItemize}
