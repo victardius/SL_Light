@@ -100,7 +100,7 @@ int main(int argc, char** argv)
 	tg.getStation("Uppsala")->getPath("Mariatorget")->tt->addDeparture(46, sub, tg.getStation("Uppsala")->getPath("Mariatorget")->length);
 	tg.getStation("Uppsala")->getPath("Mariatorget")->tt->addDeparture(56, sub, tg.getStation("Uppsala")->getPath("Mariatorget")->length);
 
-	tg.aStar(tg.getStation("T-Centralen"), tg.getStation("Unreachable"), 8);
+	tg.aStar(tg.getStation("T-Centralen"), tg.getStation("Unreachable"), 15);
 
 	std::cout << std::endl;
 

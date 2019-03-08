@@ -113,7 +113,7 @@ bool TransportGraph::printPath()
 {
 	if (destination != nullptr) {
 		if (destination->known) {
-			std::string temp = "Station: " + destination->getName() + ", Minuter: " + std::to_string(destination->timeAway) + ", ";
+			std::string temp = "Station: " + destination->getName() + ", Minuter: " + std::to_string(destination->timeAway);
 
 			for (Station* s = destination->previous; s->getName() != startStation->getName(); s = s->previous) {
 				std::string t = "Station: " + s->getName() + ", Minuter: " + std::to_string(s->timeAway) + ", ";
