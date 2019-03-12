@@ -13,19 +13,30 @@ TransportGraph::TransportGraph()
 }
 
 /**
- * Finds the shortest path in minutes to get from start to end. The function does not return anything, but it changes the previous variable in the
- * Station objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied 
- * by 60 to convert it into minutes.
- * When the fastest path to end has been found the path there can be printed through the end stations previous variable and then using the previous on
+ * Finds the shortest path in minutes to get from start to end based on the A* algorithm. The function does not return anything, but it changes the 
+ * previous variable in the Station objects based on the how to get there the fastest including heuristics which is distance to end divided by top 
+ * speed and finally multiplied  by 60 to convert it into minutes.
+ * When the fastest path to end has been found, the path there can be printed through the end stations previous variable and then using the previous on
  * every previous station until the start station has been reached. This can also be done by using the printPath() function in TransportGraph after
  * this function has been run.
+ * 
+ * If there is no paths/edges leading to the end station the function will not set a path and using the printPath() function will print that no path to 
+ * the end station exists. The function will however always try to find a path and go through all objects it can get to through connected paths/edges 
+ * and it will print the stations when it finds its fastest way there to cout with name and time. It will only stop when it has found the shortest path
+ * to all stations/objects it can possibly get to if end station is not reachable, the same is also true if the station does not exists within the 
+ * graphs context. 
+ * 
+ * print all stations it goes to and how long it takes.
+ * If either Station* start or end is a nullptr the function will not run and nothing happens, start and end stations are required to be able to find a 
+ * path. The same is true if Int time is a value below zero.
  *
  * @param Station* start and end representing where to travel from and to in the graph. 
  * @param int time representing the time to start travelling in minutes. Also used to find the best path in regards to departure times and lengths.
+ * @return This function returns void.
  */
 void TransportGraph::aStar(Station* start, Station* end, int time)
 {
-	if (end != nullptr) {
+	if (end != nullptr && start != nullptr && time >= 0) {
 		destination = end;
 		startStation = start;
 		std::priority_queue<Station*, std::vector<Station*>, SCompare> pq;
@@ -88,7 +99,7 @@ void TransportGraph::addStation(std::string name, int x, int y)
  * 
  * @param String that is the name of a station previously added.
  *
- * @return Station object reference (Station*) to the station with the parameter name sent in the function. If no station has that name it prints to cout "No such station exists!".
+ * @return Station object reference (Station*) to the station with the parameter name sent in the function. If no station has that name it prints to cout "No such station exists!" and returns a nullptr.
  */
 Station * TransportGraph::getStation(std::string name)
 {

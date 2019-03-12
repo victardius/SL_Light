@@ -35,7 +35,11 @@ Adds a new station to the graph without any edges (edges need to be added by usi
 \subsubsection{\texorpdfstring{aStar()}{aStar()}}
 {\footnotesize\ttfamily void Transport\+Graph\+::a\+Star (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{start,  }\item[{\mbox{\hyperlink{class_station}{Station}} $\ast$}]{end,  }\item[{int}]{time }\end{DoxyParamCaption})}
 
-Finds the shortest path in minutes to get from start to end. The function does not return anything, but it changes the previous variable in the \mbox{\hyperlink{class_station}{Station}} objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied by 60 to convert it into minutes. When the fastest path to end has been found the path there can be printed through the end stations previous variable and then using the previous on every previous station until the start station has been reached. This can also be done by using the \mbox{\hyperlink{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}{print\+Path()}} function in \mbox{\hyperlink{class_transport_graph}{Transport\+Graph}} after this function has been run.
+Finds the shortest path in minutes to get from start to end based on the A$\ast$ algorithm. The function does not return anything, but it changes the previous variable in the \mbox{\hyperlink{class_station}{Station}} objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied by 60 to convert it into minutes. When the fastest path to end has been found, the path there can be printed through the end stations previous variable and then using the previous on every previous station until the start station has been reached. This can also be done by using the \mbox{\hyperlink{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}{print\+Path()}} function in \mbox{\hyperlink{class_transport_graph}{Transport\+Graph}} after this function has been run.
+
+If there is no paths/edges leading to the end station the function will not set a path and using the \mbox{\hyperlink{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}{print\+Path()}} function will print that no path to the end station exists. The function will however always try to find a path and go through all objects it can get to through connected paths/edges and it will print the stations when it finds its fastest way there to cout with name and time. It will only stop when it has found the shortest path to all stations/objects it can possibly get to if end station is not reachable, the same is also true if the station does not exists within the graphs context.
+
+print all stations it goes to and how long it takes. If either Station$\ast$ start or end is a nullptr the function will not run and nothing happens, start and end stations are required to be able to find a path. The same is true if Int time is a value below zero.
 
 
 \begin{DoxyParams}{Parameters}
@@ -44,6 +48,9 @@ Finds the shortest path in minutes to get from start to end. The function does n
 {\em int} & time representing the time to start travelling in minutes. Also used to find the best path in regards to departure times and lengths. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+This function returns void. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_transport_graph_a2ed30af16042cda3aa65b5b6b57deb62}\label{class_transport_graph_a2ed30af16042cda3aa65b5b6b57deb62}} 
 \index{TransportGraph@{TransportGraph}!getStation@{getStation}}
 \index{getStation@{getStation}!TransportGraph@{TransportGraph}}
@@ -58,7 +65,7 @@ Gets the station object reference related to the string sent as a parameter from
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{class_station}{Station}} object reference (Station$\ast$) to the station with the parameter name sent in the function. If no station has that name it prints to cout \char`\"{}\+No such station exists!\char`\"{}. 
+\mbox{\hyperlink{class_station}{Station}} object reference (Station$\ast$) to the station with the parameter name sent in the function. If no station has that name it prints to cout \char`\"{}\+No such station exists!\char`\"{} and returns a nullptr. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}\label{class_transport_graph_adcd1d4c8068b5b524cbd323061caf068}} 
 \index{TransportGraph@{TransportGraph}!printPath@{printPath}}

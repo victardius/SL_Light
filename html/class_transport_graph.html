@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SL_Light: TransportGraph Class Reference</title>
+<title>My Project: TransportGraph Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">SL_Light
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -154,7 +154,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Finds the shortest path in minutes to get from start to end. The function does not return anything, but it changes the previous variable in the <a class="el" href="class_station.html">Station</a> objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied by 60 to convert it into minutes. When the fastest path to end has been found the path there can be printed through the end stations previous variable and then using the previous on every previous station until the start station has been reached. This can also be done by using the <a class="el" href="class_transport_graph.html#adcd1d4c8068b5b524cbd323061caf068">printPath()</a> function in <a class="el" href="class_transport_graph.html">TransportGraph</a> after this function has been run.</p>
+<p>Finds the shortest path in minutes to get from start to end based on the A* algorithm. The function does not return anything, but it changes the previous variable in the <a class="el" href="class_station.html">Station</a> objects based on the how to get there the fastest including heuristics which is distance to end divided by top speed and finally multiplied by 60 to convert it into minutes. When the fastest path to end has been found, the path there can be printed through the end stations previous variable and then using the previous on every previous station until the start station has been reached. This can also be done by using the <a class="el" href="class_transport_graph.html#adcd1d4c8068b5b524cbd323061caf068">printPath()</a> function in <a class="el" href="class_transport_graph.html">TransportGraph</a> after this function has been run.</p>
+<p>If there is no paths/edges leading to the end station the function will not set a path and using the <a class="el" href="class_transport_graph.html#adcd1d4c8068b5b524cbd323061caf068">printPath()</a> function will print that no path to the end station exists. The function will however always try to find a path and go through all objects it can get to through connected paths/edges and it will print the stations when it finds its fastest way there to cout with name and time. It will only stop when it has found the shortest path to all stations/objects it can possibly get to if end station is not reachable, the same is also true if the station does not exists within the graphs context.</p>
+<p>print all stations it goes to and how long it takes. If either Station* start or end is a nullptr the function will not run and nothing happens, start and end stations are required to be able to find a path. The same is true if Int time is a value below zero.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Station*</td><td>start and end representing where to travel from and to in the graph. </td></tr>
@@ -162,6 +164,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>This function returns void. </dd></dl>
 
 </div>
 </div>
@@ -187,7 +190,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_station.html">Station</a> object reference (Station*) to the station with the parameter name sent in the function. If no station has that name it prints to cout "No such station exists!". </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_station.html">Station</a> object reference (Station*) to the station with the parameter name sent in the function. If no station has that name it prints to cout "No such station exists!" and returns a nullptr. </dd></dl>
 
 </div>
 </div>
