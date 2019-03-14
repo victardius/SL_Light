@@ -49,6 +49,46 @@ bool Station::operator>(const Station& other)
 	return timeAway + hTimeAway > other.timeAway + other.hTimeAway;
 }
 
+bool Station::getKnown()
+{
+	return known;
+}
+
+Station * Station::getPrevious()
+{
+	return previous;
+}
+
+int Station::getTimeAway()
+{
+	return timeAway;
+}
+
+int Station::getHTimeAway()
+{
+	return hTimeAway;
+}
+
+void Station::setKnown(bool k)
+{
+	known = k;
+}
+
+void Station::setPrevious(Station * s)
+{
+	previous = s;
+}
+
+void Station::setTimeAway(int ta)
+{
+	timeAway = ta;
+}
+
+void Station::setHTimeAway(int hta)
+{
+	hTimeAway = hta;
+}
+
 Station::~Station()
 {
 	

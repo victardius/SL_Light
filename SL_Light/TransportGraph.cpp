@@ -42,38 +42,38 @@ void TransportGraph::aStar(Station* start, Station* end, int time)
 		std::priority_queue<Station*, std::vector<Station*>, SCompare> pq;
 
 		for (auto& s : stations) {
-			s.second->timeAway = INFINITY;
-			s.second->known = false;
+			s.second->setTimeAway(INFINITY);
+			s.second->setKnown(false);
 		}
 
-		start->timeAway = 0 + time;
+		start->setTimeAway(0 + time);
 		
 		pq.push(start);
 
-		while (!end->known && !(pq.size() == 0)) {
+		while (!end->getKnown() && !(pq.size() == 0)) {
 			Station* s = pq.top();
 			pq.pop();
-			std::cout << "Station: " << s->getName() << " Minuter: " << s->timeAway << std::endl;
+			std::cout << "Station: " << s->getName() << " Minuter: " << s->getTimeAway() << std::endl;
 
-			if (!s->known) {
+			if (!s->getKnown()) {
 
-				s->known = true;
+				s->setKnown(true);
 
 				for (auto& p : s->getPaths()) {
 
-					if (!p.second->station->known) {
+					if (!p.second->station->getKnown()) {
 
-						std::pair<int, std::pair<int, Transport*>> temp = p.second->tt->getDeparture(s->timeAway);
+						std::pair<int, std::pair<int, Transport*>> temp = p.second->tt->getDeparture(s->getTimeAway());
 						int timeAway = temp.second.first;
 
-						if (p.second->station->timeAway == INFINITY || s->timeAway + timeAway < p.second->station->timeAway) {
+						if (p.second->station->getTimeAway() == INFINITY || s->getTimeAway() + timeAway < p.second->station->getTimeAway()) {
 
-							p.second->station->timeAway = timeAway;
+							p.second->station->setTimeAway(timeAway);
 							int x = std::abs(end->getPosition()->x - p.second->station->getPosition()->x);
 							int y = std::abs(end->getPosition()->y - p.second->station->getPosition()->y);
 							double distance = std::sqrt(x * x + y * y);
-							p.second->station->hTimeAway = (distance / Transport::getTopSpeed()) * 60;
-							p.second->station->previous = s;
+							p.second->station->setHTimeAway((distance / Transport::getTopSpeed()) * 60);
+							p.second->station->setPrevious(s);
 							pq.push(p.second->station);//kan vara ett alternativ att göra en egen prioritetskö pga dubletter men den bör nästan aldrig gå igenom samma flera gånger
 						}
 					}
@@ -123,15 +123,15 @@ Station * TransportGraph::getStation(std::string name)
 bool TransportGraph::printPath()
 {
 	if (destination != nullptr) {
-		if (destination->known) {
-			std::string temp = "Station: " + destination->getName() + ", Minuter: " + std::to_string(destination->timeAway);
+		if (destination->getKnown()) {
+			std::string temp = "Station: " + destination->getName() + ", Minuter: " + std::to_string(destination->getTimeAway());
 
-			for (Station* s = destination->previous; s->getName() != startStation->getName(); s = s->previous) {
-				std::string t = "Station: " + s->getName() + ", Minuter: " + std::to_string(s->timeAway) + ", ";
+			for (Station* s = destination->getPrevious(); s->getName() != startStation->getName(); s = s->getPrevious()) {
+				std::string t = "Station: " + s->getName() + ", Minuter: " + std::to_string(s->getTimeAway()) + ", ";
 				temp.insert(0, t);
 			}
 
-			std::string t = "Station: " + startStation->getName() + ", Minuter: " + std::to_string(startStation->timeAway) + ", ";
+			std::string t = "Station: " + startStation->getName() + ", Minuter: " + std::to_string(startStation->getTimeAway()) + ", ";
 			temp.insert(0, t);
 
 			std::cout << temp << std::endl;

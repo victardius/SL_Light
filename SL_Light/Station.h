@@ -20,12 +20,16 @@ public:
 	std::unordered_map<std::string, Path<Station*>*> getPaths();
 	Path<Station*>* getPath(std::string name);
 	std::string getName();
-	int timeAway = INFINITY;
-	int hTimeAway = INFINITY;
-	Station* previous;
-	bool known = false;
 	bool operator<(const Station& other);
 	bool operator>(const Station& other);
+	bool getKnown();
+	Station* getPrevious();
+	int getTimeAway();
+	int getHTimeAway();
+	void setKnown(bool k);
+	void setPrevious(Station* s);
+	void setTimeAway(int ta);
+	void setHTimeAway(int hta);
 	Station() {};
 	~Station();
 protected:
@@ -33,7 +37,10 @@ protected:
 private:
 	Coordinate position{ 0,0 };
 	std::string name;
-	//std::vector<Path<Station*>*> paths;
+	int timeAway = INFINITY;
+	int hTimeAway = INFINITY;
+	Station* previous;
+	bool known = false;
 	std::unordered_map<std::string, Path<Station*>*> paths;
 };
 
